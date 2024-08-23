@@ -3,16 +3,17 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNF6SL8DPX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNF6SL8DPX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-ZNF6SL8DPX');
-</script>
+        gtag('config', 'G-ZNF6SL8DPX');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Furni Journey for any queries or support needs.">
     <title>Contact Us - Furni Journey</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -27,6 +28,7 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            flex-direction: column;
             position: relative;
             overflow: hidden;
         }
@@ -76,19 +78,7 @@
         .welcome-message {
             font-size: 36px;
             color: #fff;
-            margin-top: -35px;
-        }
-        body {
-            background: #d2b48c;
-            font-family: 'Quicksand', sans-serif;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            margin-top: 100px; /* Adjust to make it align with the header */
         }
 
         .contact-section {
@@ -128,12 +118,12 @@
 <body>
     <div class="background-image"></div>
     <header>
-        <div class="profile-icon"><i class="fas fa-user-circle"></i></div>
+        <div class="profile-icon" aria-label="Profile Icon"><i class="fas fa-user-circle"></i></div>
         <nav>
-            <a href="homepage.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="aboutus.html">About Us</a>
-            <a href="contactus.html">Contact</a>
+            <a href="homepage.html" aria-label="Home">Home</a>
+            <a href="services.html" aria-label="Services">Services</a>
+            <a href="aboutus.html" aria-label="About Us">About Us</a>
+            <a href="contactus.html" aria-label="Contact">Contact</a>
         </nav>
     </header>
 
@@ -143,9 +133,9 @@
     <div class="contact-section">
         <div class="contact-form">
             <form action="contactus.php" method="post" class="contact-form">
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Submit</button>
+                <input type="email" name="email" placeholder="Your Email Address" required aria-label="Your Email Address">
+                <textarea name="message" placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+                <button type="submit" aria-label="Submit Contact Form">Submit</button>
             </form>
         </div>
     </div>
