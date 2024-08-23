@@ -4,9 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Preloading Google Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght=500&display=swap"></noscript>
+    
+    <!-- Defer FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+
     <title>Homepage</title>
+    
+    <!-- Inline critical CSS -->
     <style>
         body {
             margin: 0;
@@ -65,13 +73,13 @@
         .right-align {
             text-align: right;
             color: rgb(239, 8, 8);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
             padding: 10px;
         }
 
         .boxes-container {
-            background-color: #8B4513; /* Brown background color for the boxes container */
-            padding: 20px; /* Adjust as needed */
+            background-color: #8B4513;
+            padding: 20px;
             display: flex;
             justify-content: space-around;
             width: 100%;
@@ -88,7 +96,7 @@
             width: 80px;
             cursor: pointer;
             transition: background-color 0.3s ease-in-out;
-            margin-bottom: 20px; /* Adjust as needed */
+            margin-bottom: 20px;
         }
 
         .box {
@@ -148,12 +156,12 @@
 
         .white-bg {
             background-color: #f5f5f5;
-            padding: 150px 0; /* Increased padding to create more space around the content */
+            padding: 150px 0;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            text-align: center; /* Center-align the content */
+            text-align: center;
         }
 
         .homepage-content {
@@ -200,17 +208,17 @@
     </style>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNF6SL8DPX"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-ZNF6SL8DPX');
-</script>
-
 <body>
+
+    <!-- Google Analytics - Asynchronous Loading -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNF6SL8DPX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZNF6SL8DPX');
+    </script>
 
     <div class="white-bg">
         <div class="homepage-content">
@@ -223,7 +231,6 @@
     <div class="container">
         <div class="text-container">
             <div class="right-align">
-                <!-- Content here -->
             </div>
         </div>
     </div>
