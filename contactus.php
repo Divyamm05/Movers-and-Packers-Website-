@@ -1,29 +1,17 @@
-<head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNF6SL8DPX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZNF6SL8DPX');
-</script>
-</head>
 <?php
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/Applications/XAMPP/xamppfiles/htdocs/WP/PHPMailer-master/src/Exception.php';
-require '/Applications/XAMPP/xamppfiles/htdocs/WP/PHPMailer-master/src/PHPMailer.php';
-require '/Applications/XAMPP/xamppfiles/htdocs/WP/PHPMailer-master/src/SMTP.php';
+require 'path/to/PHPMailer/src/Exception.php';
+require 'path/to/PHPMailer/src/PHPMailer.php';
+require 'path/to/PHPMailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $message = $_POST["message"];
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $message = htmlspecialchars($_POST['message'], ENT_QUOTES, 'UTF-8');
 
     $mail = new PHPMailer(true); // Create a new PHPMailer instance
     try {
@@ -31,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com'; // SMTP server address
         $mail->SMTPAuth   = true; // Enable SMTP authentication
-        $mail->Username   = 'contact.furnijourney@gmail.com'; // SMTP username
-        $mail->Password   = 'kger szin nexz xkee'; // SMTP password
+        $mail->Username   = getenv('SMTP_USERNAME'); // SMTP username from environment variable
+        $mail->Password   = getenv('SMTP_PASSWORD'); // SMTP password from environment variable
         $mail->SMTPSecure = 'tls'; // Enable TLS encryption; `ssl` also accepted
         $mail->Port       = 587; // TCP port to connect to
 
         //Recipients
-        $mail->setFrom('contact.furnijourney@gmail.com'); // Sender's email address and name
+        $mail->setFrom('contact.furnijourney@gmail.com', 'FurniJourney Support'); // Sender's email address and name
         $mail->addAddress($email); // Recipient's email address
 
         //Content
@@ -48,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->send();
         echo 'Email sent successfully!';
     } catch (Exception $e) {
-        echo "Failed to send email. Error: {$mail->ErrorInfo}";
+        error_log($mail->ErrorInfo, 3, '/var/log/phpmailer_errors.log'); // Log error to a file
+        echo "Failed to send email. Please try again later.";
     }
 }
 ?>
